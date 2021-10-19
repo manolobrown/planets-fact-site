@@ -1,0 +1,32 @@
+@use "../util" as *;
+
+body {
+  background-color: var(--black);
+  background-image: url("../../images/background-stars.svg");
+  background-repeat: no-repeat;
+}
+
+body,
+h1,
+h2,
+h4,
+h3,
+h3,
+a,
+p {
+  color: var(--white);
+}
+
+svg,
+svg path {
+  transition: fill 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding-left: rem(24);
+  padding-right: rem(24);
+}

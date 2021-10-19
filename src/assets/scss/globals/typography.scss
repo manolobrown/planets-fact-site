@@ -1,0 +1,70 @@
+@use "../util" as *;
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+body,
+h3,
+h4 {
+  font-family: var(--font-body);
+}
+
+h1,
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+h3,
+h4 {
+  font-weight: 700;
+}
+
+body {
+  font-size: rem(14);
+  line-height: rem(25);
+  font-weight: 400;
+}
+
+h1 {
+  font-size: rem(80);
+  line-height: rem(103);
+}
+
+h2 {
+  font-size: rem(40);
+  line-height: rem(52);
+  letter-spacing: rem(-1.5);
+}
+
+h3 {
+  font-size: rem(12);
+  line-height: rem(25);
+  letter-spacing: rem(2.6);
+}
+
+h4 {
+  font-size: rem(11);
+  line-height: rem(25);
+  letter-spacing: rem(1);
+}
+
+h1,
+h2,
+h3,
+h4,
+.logo,
+nav {
+  text-transform: uppercase;
+}
