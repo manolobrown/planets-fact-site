@@ -32,32 +32,33 @@ h4 {
 }
 
 body {
-  font-size: rem(14);
-  line-height: rem(25);
+  font-size: rem(11);
+  line-height: rem(22);
   font-weight: 400;
 }
 
 h1 {
-  font-size: rem(80);
-  line-height: rem(103);
+  font-size: rem(40);
+  line-height: rem(52);
 }
 
 h2 {
-  font-size: rem(40);
-  line-height: rem(52);
-  letter-spacing: rem(-1.5);
+  font-size: rem(20);
+  line-height: rem(26);
+  letter-spacing: rem(-0.75);
 }
 
-h3 {
+h3,
+.btn {
   font-size: rem(12);
   line-height: rem(25);
   letter-spacing: rem(2.6);
 }
 
 h4 {
-  font-size: rem(11);
-  line-height: rem(25);
-  letter-spacing: rem(1);
+  font-size: rem(8);
+  line-height: rem(16);
+  letter-spacing: rem(0.73);
 }
 
 h1,
@@ -67,4 +68,66 @@ h4,
 .logo,
 nav {
   text-transform: uppercase;
+}
+
+@include breakpoint(medium) {
+  body {
+    font-size: rem(14);
+    line-height: rem(25);
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: rem(48);
+    line-height: rem(103);
+  }
+
+  h2 {
+    font-size: rem(40);
+    line-height: rem(52);
+    letter-spacing: rem(-1.5);
+  }
+
+  h3 {
+    font-size: rem(12);
+    line-height: rem(25);
+    letter-spacing: rem(2.6);
+  }
+
+  h4 {
+    font-size: rem(11);
+    line-height: rem(25);
+    letter-spacing: rem(1);
+  }
+}
+
+@include breakpoint(medium) {
+  body {
+    font-size: rem(14);
+    line-height: rem(25);
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: rem(48);
+    line-height: rem(103);
+  }
+
+  h2 {
+    font-size: rem(40);
+    line-height: rem(52);
+    letter-spacing: rem(-1.5);
+  }
+
+  h3 {
+    font-size: rem(12);
+    line-height: rem(25);
+    letter-spacing: rem(2.6);
+  }
+
+  h4 {
+    font-size: rem(11);
+    line-height: rem(25);
+    letter-spacing: rem(1);
+  }
 }

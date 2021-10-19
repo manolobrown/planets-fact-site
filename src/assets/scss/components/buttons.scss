@@ -9,13 +9,31 @@
   padding: 8px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-size: rem(12);
+  font-size: rem(9);
   font-weight: 700;
   text-transform: uppercase;
   color: var(--white);
+  letter-spacing: rem(1.93);
+  justify-content: center;
+  position: relative;
 
+  &:after {
+    content: "";
+    height: rem(4);
+    background-color: var(--dark-gray);
+    position: absolute;
+    bottom: rem(-5);
+    width: 100%;
+    display: block;
+  }
+
+  &,
   span {
     opacity: 0.5;
+  }
+
+  &.active {
+    opacity: 1;
   }
 
   &:hover {

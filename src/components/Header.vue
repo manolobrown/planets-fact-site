@@ -70,6 +70,7 @@ header {
     font-weight: 700;
     letter-spacing: rem(1.36);
     background-color: var(--black);
+    display: none;
 
     ul {
       list-style: none;
