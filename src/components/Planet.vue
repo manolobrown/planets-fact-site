@@ -3,8 +3,12 @@
     <nav class="planet__nav">
       <ul>
         <li><a href="#" class="btn active">Overview</a></li>
-        <li><a href="#" class="btn">Structure</a></li>
-        <li><a href="#" class="btn">Surface</a></li>
+        <li>
+          <a href="#" class="btn"><span>Internal&nbsp;</span>Structure</a>
+        </li>
+        <li>
+          <a href="#" class="btn">Surface&nbsp;<span>Geology</span></a>
+        </li>
       </ul>
     </nav>
     <div class="planet__image">
@@ -77,6 +81,9 @@ export default {
       flex: 0 0 100%;
       width: 100%;
       max-width: rem(80);
+      span {
+        display: none;
+      }
     }
   }
 }
@@ -133,6 +140,147 @@ export default {
   }
   > div + div {
     margin-top: rem(10);
+  }
+}
+
+@include breakpoint(medium) {
+  .planet {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+      "header header"
+      "main aside"
+      "footer footer";
+
+    &__image {
+      grid-area: header;
+    }
+    &__copy {
+      grid-area: main;
+    }
+    &__nav {
+      grid-area: aside;
+      ul li span {
+        display: inline-block;
+        opacity: 1;
+      }
+    }
+    &__stats {
+      grid-area: footer;
+    }
+
+    &__copy {
+      text-align: left;
+    }
+
+    &__nav {
+      margin-left: auto;
+      align-self: center;
+      border-bottom: 0;
+
+      ul {
+        flex-wrap: wrap;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        counter-reset: planet-nav-counter;
+      }
+      ul li {
+        max-width: 100%;
+        .btn {
+          justify-content: flex-start;
+          border: 1px solid rgba(216, 216, 216, 0.2);
+          padding: rem(15);
+          opacity: 1;
+
+          &.active {
+            background-color: var(--teal);
+          }
+          &:hover {
+            text-decoration: none;
+          }
+        }
+        .btn:after {
+          display: none;
+        }
+
+        & + li {
+          margin-top: 15px;
+        }
+
+        & .btn:before {
+          counter-increment: planet-nav-counter;
+          content: "0" counter(planet-nav-counter);
+          margin-right: rem(15);
+          opacity: 0.5;
+        }
+      }
+    }
+    &__stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: rem(10);
+
+      > div {
+        flex-wrap: wrap;
+
+        * {
+          width: 100%;
+        }
+        h2 {
+          font-size: rem(24);
+        }
+        h4 {
+          font-size: rem(8);
+        }
+      }
+      > div + div {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+@include breakpoint(large) {
+  .planet {
+    max-width: 68.75em;
+    margin: 0 auto;
+    grid-template-columns: 46.875em 21.875em;
+    grid-template-areas:
+      "planet-image planet-copy"
+      "planet-image planet-nav"
+      "planet-stats planet-stats";
+    height: 100vh;
+    align-content: center;
+  }
+  .planet__image {
+    grid-area: planet-image;
+    margin: 0;
+    align-self: center;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .planet__copy {
+    grid-area: planet-copy;
+  }
+
+  .planet__nav {
+    grid-area: planet-nav;
+  }
+
+  .planet__nav {
+    margin-right: 0;
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .planet__stats {
+    grid-area: planet-stats;
+    margin-block-start: rem(84);
   }
 }
 </style>

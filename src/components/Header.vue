@@ -104,33 +104,127 @@ header {
           background-size: contain;
         }
       }
-      .nav__item-Mercury:before {
+      .nav__item-Mercury:before,
+      .nav__item-Mercury a:before {
         background-color: var(--teal);
       }
-      .nav__item-Venus:before {
+      .nav__item-Venus:before,
+      .nav__item-Venus a:before {
         background-color: var(--yellow);
       }
-      .nav__item-Earth:before {
+      .nav__item-Earth:before,
+      .nav__item-Earth a:before {
         background-color: var(--purple);
       }
-      .nav__item-Mars:before {
+      .nav__item-Mars:before,
+      .nav__item-Mars a:before {
         background-color: var(--red);
       }
-      .nav__item-Jupiter:before {
+      .nav__item-Jupiter:before,
+      .nav__item-Jupiter a:before {
         background-color: var(--dark-red);
       }
-      .nav__item-Saturn:before {
+      .nav__item-Saturn:before,
+      .nav__item-Saturn a:before {
         background-color: var(--orange);
       }
-      .nav__item-Uranus:before {
+      .nav__item-Uranus:before,
+      .nav__item-Uranus a:before {
         background-color: var(--green);
       }
-      .nav__item-Neptune:before {
+      .nav__item-Neptune:before,
+      .nav__item-Neptune a:before {
         background-color: var(--blue);
       }
 
       li + li {
         border-top: 1px solid var(--dark-gray);
+      }
+    }
+  }
+
+  @include breakpoint(medium) {
+    border-bottom: 1px solid var(--dark-gray);
+    padding-block-end: rem(35);
+    padding-left: rem(50);
+    padding-right: rem(50);
+
+    main {
+      border-bottom: 0;
+      justify-content: center;
+      padding-top: rem(60);
+      padding-bottom: rem(60);
+    }
+    button {
+      display: none;
+    }
+
+    nav {
+      display: block;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      font-size: rem(11);
+      letter-spacing: rem(1);
+      padding: 0;
+
+      li {
+        padding: rem(0);
+      }
+      li:before,
+      li:after {
+        display: none;
+      }
+
+      li + li {
+        border-top: 0;
+      }
+    }
+  }
+
+  @include breakpoint(large) {
+    padding-block-start: rem(35);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    main {
+      flex: 0 0 auto;
+      padding: 0;
+    }
+
+    nav {
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: rem(665);
+    }
+    .nav {
+      padding-left: 0;
+
+      li {
+        flex-wrap: wrap;
+      }
+      li a,
+      li a.active {
+        position: relative;
+        text-decoration: none;
+        &:hover:before {
+          opacity: 1;
+        }
+      }
+      li a:before {
+        display: block;
+        border-radius: 0;
+        width: 100%;
+        height: rem(4);
+        position: absolute;
+        top: rem(-35);
+        content: "";
+        opacity: 0;
+        transition: opacity 0.2s ease;
       }
     }
   }
