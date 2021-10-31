@@ -2,7 +2,7 @@
   <header>
     <main>
       <div class="logo">The Planets</div>
-      <button>
+      <button @click="toggleNav()">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="17">
           <g fill="#FFF" fill-rule="evenodd">
             <path d="M0 0h24v3H0zM0 7h24v3H0zM0 14h24v3H0z" />
@@ -13,29 +13,64 @@
 
     <nav>
       <ul class="nav">
-        <li
-          :key="planet.name"
+        <NavItem
+          :key="planet.id"
           v-for="planet in planets"
           :planet="planet"
-          :class="`nav__item-${planet.name}`"
+          @nav-status="toggleNav"
         >
-          <a href="">{{ planet.name }}</a>
-        </li>
+        </NavItem>
       </ul>
     </nav>
   </header>
 </template>
 
 <script>
+import NavItem from "../components/NavItem.vue";
 export default {
   name: "Header",
+  components: {
+    NavItem,
+  },
   props: {
     planets: Array,
+  },
+  data() {
+    return {
+      toggleNavStatus: false,
+    };
+  },
+  methods: {
+    toggleNav() {
+      let mql = window.matchMedia("(max-width:767px)");
+      let getBody = document.querySelector("body");
+      let getNav = document.querySelector("header nav");
+
+      if (mql.matches) {
+        if (this.toggleNavStatus === false) {
+          getBody.style.position = "fixed";
+          getNav.style.position = "absolute";
+          getNav.style.height = "100vh";
+          getNav.style.visibility = "visible";
+          getNav.style.opacity = "1";
+
+          this.toggleNavStatus = true;
+        } else if (this.toggleNavStatus === true) {
+          getBody.style.position = "static";
+          getNav.style.position = "static";
+          getNav.style.height = "0";
+          getNav.style.visibility = "hidden";
+          getNav.style.opacity = "0";
+
+          this.toggleNavStatus = false;
+        }
+      }
+    },
   },
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @use "../assets/scss/util" as *;
 
 header {
@@ -70,7 +105,11 @@ header {
     font-weight: 700;
     letter-spacing: rem(1.36);
     background-color: var(--black);
-    display: none;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    transition: all 0.2s ease;
 
     ul {
       list-style: none;
@@ -160,7 +199,9 @@ header {
     }
 
     nav {
-      display: block;
+      visibility: visible !important;
+      opacity: 1 !important;
+      height: auto !important;
     }
 
     .nav {
@@ -207,14 +248,16 @@ header {
       li {
         flex-wrap: wrap;
       }
-      li a,
-      li a.active {
+      li a {
         position: relative;
         text-decoration: none;
-        &:hover:before {
-          opacity: 1;
-        }
       }
+
+      li a.router-link-active:before,
+      li a:hover:before {
+        opacity: 1;
+      }
+
       li a:before {
         display: block;
         border-radius: 0;

@@ -12,18 +12,16 @@
       </ul>
     </nav>
     <div class="planet__image">
-      <img src="../assets/images/planet-mercury.svg" alt="" />
+      <img :src="planet.images.planet" alt="" />
     </div>
     <div class="planet__copy">
-      <h1>Mercury</h1>
+      <h1>{{ planet.name }}</h1>
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt ut
-        molestias hic, aliquid deserunt dolorem minus doloremque distinctio
-        provident. Sit!
+        {{ planet.overview.content }}
       </p>
       <div class="source">
         Source:
-        <a href="#"
+        <a :href="planet.overview.source" target="_blank"
           >Wikipedia
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
             <path
@@ -36,29 +34,38 @@
     <div class="planet__stats">
       <div class="rotation">
         <h4>Rotation Time</h4>
-        <h2>58.6 Days</h2>
+        <h2>{{ planet.rotation }}</h2>
       </div>
       <div class="revolution">
         <h4>Revolution Time</h4>
-        <h2>87.97 Days</h2>
+        <h2>{{ planet.revolution }}</h2>
       </div>
       <div class="radius">
         <h4>Radius</h4>
-        <h2>58.6 Days</h2>
+        <h2>{{ planet.radius }}</h2>
       </div>
       <div class="temperature">
         <h4>Average Temp.</h4>
-        <h2>430&deg;C</h2>
+        <h2>{{ planet.temperature }}</h2>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import data from "../../data.json";
 export default {
   name: "Planet",
   props: {
-    planets: Object,
+    id: {
+      type: Number,
+      required: true,
+    },
+  },
+  computed: {
+    planet() {
+      return data.planets.find((planet) => planet.id === this.id);
+    },
   },
 };
 </script>
@@ -243,7 +250,7 @@ export default {
 
 @include breakpoint(large) {
   .planet {
-    max-width: 68.75em;
+    max-width: 69.375em;
     margin: 0 auto;
     grid-template-columns: 46.875em 21.875em;
     grid-template-areas:
@@ -251,6 +258,7 @@ export default {
       "planet-image planet-nav"
       "planet-stats planet-stats";
     height: 100vh;
+    //max-height: 53.125em;
     align-content: center;
   }
   .planet__image {
