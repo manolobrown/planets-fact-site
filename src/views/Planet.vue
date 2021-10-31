@@ -158,6 +158,7 @@ export default {
       "header header"
       "main aside"
       "footer footer";
+    justify-content: center;
 
     &__image {
       grid-area: header;
@@ -250,15 +251,14 @@ export default {
 
 @include breakpoint(large) {
   .planet {
-    max-width: 69.375em;
+    max-width: rem(1110);
     margin: 0 auto;
-    grid-template-columns: 46.875em 21.875em;
+    grid-template-columns: 760px 350px;
     grid-template-areas:
       "planet-image planet-copy"
       "planet-image planet-nav"
       "planet-stats planet-stats";
-    height: 100vh;
-    //max-height: 53.125em;
+    height: 90vh;
     align-content: center;
   }
   .planet__image {
