@@ -2,12 +2,47 @@
   <div class="planet">
     <nav class="planet__nav">
       <ul>
-        <li><a href="#" class="btn active">Overview</a></li>
         <li>
-          <a href="#" class="btn"><span>Internal&nbsp;</span>Structure</a>
+          <a
+            @click.prevent="
+              planetImage(
+                'planet',
+                this.planet.overview.content,
+                this.planet.overview.source
+              )
+            "
+            href="#"
+            class="btn active"
+            >Overview</a
+          >
         </li>
         <li>
-          <a href="#" class="btn">Surface&nbsp;<span>Geology</span></a>
+          <a
+            @click.prevent="
+              planetImage(
+                'internal',
+                this.planet.structure.content,
+                this.planet.structure.source
+              )
+            "
+            href="#"
+            class="btn"
+            ><span>Internal&nbsp;</span>Structure</a
+          >
+        </li>
+        <li>
+          <a
+            @click.prevent="
+              planetImage(
+                'geology',
+                this.planet.geology.content,
+                this.planet.geology.source
+              )
+            "
+            href="#"
+            class="btn"
+            >Surface&nbsp;<span>Geology</span></a
+          >
         </li>
       </ul>
     </nav>
@@ -62,9 +97,23 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {};
+  },
   computed: {
     planet() {
       return data.planets.find((planet) => planet.id === this.id);
+    },
+  },
+  methods: {
+    planetImage(imgSrc, copy, source) {
+      let planetImageObj = this.planet.images;
+      let getPlanetImage = document.querySelector(".planet__image img");
+      let getPlanetCopy = document.querySelector(".planet__copy p");
+      let getPlanetSource = document.querySelector(".planet__copy .source a");
+      getPlanetImage.src = planetImageObj[imgSrc];
+      getPlanetCopy.textContent = copy;
+      getPlanetSource.href = source;
     },
   },
 };
