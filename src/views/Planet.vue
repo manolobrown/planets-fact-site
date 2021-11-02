@@ -9,10 +9,12 @@
                 'planet',
                 this.planet.overview.content,
                 this.planet.overview.source
-              )
+              ),
+                toggleActiveClass(1)
             "
             href="#"
-            class="btn active"
+            class="btn"
+            :class="{ active: isActive == 1 }"
             >Overview</a
           >
         </li>
@@ -23,10 +25,12 @@
                 'internal',
                 this.planet.structure.content,
                 this.planet.structure.source
-              )
+              ),
+                toggleActiveClass(2)
             "
             href="#"
             class="btn"
+            :class="{ active: isActive == 2 }"
             ><span>Internal&nbsp;</span>Structure</a
           >
         </li>
@@ -37,10 +41,12 @@
                 'geology',
                 this.planet.geology.content,
                 this.planet.geology.source
-              )
+              ),
+                toggleActiveClass(3)
             "
             href="#"
             class="btn"
+            :class="{ active: isActive == 3 }"
             >Surface&nbsp;<span>Geology</span></a
           >
         </li>
@@ -98,7 +104,9 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      isActive: 1,
+    };
   },
   computed: {
     planet() {
@@ -114,6 +122,9 @@ export default {
       getPlanetImage.src = planetImageObj[imgSrc];
       getPlanetCopy.textContent = copy;
       getPlanetSource.href = source;
+    },
+    toggleActiveClass(e) {
+      this.isActive = e;
     },
   },
 };
