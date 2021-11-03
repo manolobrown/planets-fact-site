@@ -1,7 +1,6 @@
 @use "../util" as *;
 
 .btn {
-  background-color: transparent;
   display: flex;
   align-items: center;
   border: 0;
@@ -36,7 +35,13 @@
     opacity: 1;
   }
 
-  &:hover {
-    background-color: var(--dark-gray);
+  @media (hover: none) and (max-width: 767px) {
+    background-color: transparent !important;
+  }
+
+  @media (hover) {
+    &:hover {
+      background-color: var(--dark-gray);
+    }
   }
 }

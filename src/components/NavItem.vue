@@ -1,5 +1,5 @@
 <template>
-  <li :class="`nav__item-${planet.name}`">
+  <li :class="`nav__item-${planet.name.toLowerCase()}`">
     <router-link
       :to="{ name: 'Planet', params: { id: planet.id } }"
       @click="$emit('nav-status')"

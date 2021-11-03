@@ -1,5 +1,5 @@
 <template>
-  <div class="planet">
+  <div :class="`planet planet--${planet.name.toLowerCase()}`">
     <nav class="planet__nav">
       <ul>
         <li>
@@ -132,6 +132,63 @@ export default {
 
 <style scoped lang="scss">
 @use "../assets/scss/util" as *;
+
+.planet {
+  &--mercury {
+    .btn.active,
+    .btn.active:after {
+      background-color: var(--teal);
+    }
+  }
+
+  &--venus {
+    .btn.active,
+    .btn.active:after {
+      background-color: var(--yellow);
+    }
+  }
+
+  &--earth {
+    .btn.active,
+    .btn.active:after {
+      background-color: var(--purple);
+    }
+  }
+
+  &--mars {
+    .btn.active,
+    .btn.active:after {
+      background-color: var(--red);
+    }
+  }
+
+  &--jupiter {
+    .btn.active,
+    .btn.active:after {
+      background-color: var(--dark-red);
+    }
+  }
+
+  &--saturn {
+    .btn.active,
+    .btn.active:after {
+      background-color: var(--orange);
+    }
+  }
+
+  &--uranus {
+    .btn.active {
+      background-color: var(--green);
+    }
+  }
+
+  &--neptune {
+    .btn.active {
+      background-color: var(--blue);
+    }
+  }
+}
+
 .planet__nav {
   border-bottom: 1px solid var(--dark-gray);
   margin-left: rem(-24);
@@ -228,11 +285,8 @@ export default {
     }
     &__nav {
       grid-area: aside;
-      ul li span {
-        display: inline-block;
-        opacity: 1;
-      }
     }
+
     &__stats {
       grid-area: footer;
     }
@@ -253,6 +307,12 @@ export default {
 
         counter-reset: planet-nav-counter;
       }
+
+      ul li span {
+        display: inline-block;
+        opacity: 1;
+      }
+
       ul li {
         max-width: 100%;
         .btn {
@@ -261,9 +321,6 @@ export default {
           padding: rem(15);
           opacity: 1;
 
-          &.active {
-            background-color: var(--teal);
-          }
           &:hover {
             text-decoration: none;
           }
@@ -284,6 +341,7 @@ export default {
         }
       }
     }
+
     &__stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);

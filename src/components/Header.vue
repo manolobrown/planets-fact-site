@@ -143,36 +143,36 @@ header {
           background-size: contain;
         }
       }
-      .nav__item-Mercury:before,
-      .nav__item-Mercury a:before {
+      .nav__item-mercury:before,
+      .nav__item-mercury a:before {
         background-color: var(--teal);
       }
-      .nav__item-Venus:before,
-      .nav__item-Venus a:before {
+      .nav__item-venus:before,
+      .nav__item-venus a:before {
         background-color: var(--yellow);
       }
-      .nav__item-Earth:before,
-      .nav__item-Earth a:before {
+      .nav__item-earth:before,
+      .nav__item-earth a:before {
         background-color: var(--purple);
       }
-      .nav__item-Mars:before,
-      .nav__item-Mars a:before {
+      .nav__item-mars:before,
+      .nav__item-mars a:before {
         background-color: var(--red);
       }
-      .nav__item-Jupiter:before,
-      .nav__item-Jupiter a:before {
+      .nav__item-jupiter:before,
+      .nav__item-jupiter a:before {
         background-color: var(--dark-red);
       }
-      .nav__item-Saturn:before,
-      .nav__item-Saturn a:before {
+      .nav__item-saturn:before,
+      .nav__item-saturn a:before {
         background-color: var(--orange);
       }
-      .nav__item-Uranus:before,
-      .nav__item-Uranus a:before {
+      .nav__item-uranus:before,
+      .nav__item-uranus a:before {
         background-color: var(--green);
       }
-      .nav__item-Neptune:before,
-      .nav__item-Neptune a:before {
+      .nav__item-neptune:before,
+      .nav__item-neptune a:before {
         background-color: var(--blue);
       }
 
@@ -202,6 +202,11 @@ header {
       visibility: visible !important;
       opacity: 1 !important;
       height: auto !important;
+    }
+
+    body,
+    nav {
+      position: static !important;
     }
 
     .nav {
