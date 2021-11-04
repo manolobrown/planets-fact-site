@@ -390,6 +390,7 @@ export default {
 
   .planet__copy {
     grid-area: planet-copy;
+    align-self: flex-end;
   }
 
   .planet__nav {
